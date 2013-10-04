@@ -64,7 +64,27 @@ Finally, we see `metadata` which tells Berkshelf to use the `metadata.rb` file t
 ### Metadata.rb
 The `metadata.rb` file is what is used by Chef to resolve dependencies when the `chef-client` is executing on a node. This means that you MUST specify your dependent cookbooks in this file for them to be included when the node is converged. 
 
+```ruby
+name             'foo'
+maintainer       'Rally Software Development Corp'
+maintainer_email 'rallysoftware-cookbooks@rallydev.com'
+license          'MIT'
+description      'Installs/Configures foo'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          '0.1.0'
 
+supports 'centos'
+supports 'ubuntu'
+
+depends 'bar'
+depends 'baz', '~> 0.2.0'
+```
+
+The first section will be setup correctly when you use `jackchop` to create your cookbook. However, you will need to explicitly set the version each time you want to bump the version of your cookbook.
+
+The `metadata.rb` has a supports tag for describing supported operating systems. While this is not used to control if a cookbook will actually run on a given OS, it is good to set these values for operating systems that are being tested against.
+
+Lastly, the `depends` operator is used to express cookbook dependencies that need to be resolved on the node at converge time. It is not as expressive as the `Berkshelf` syntax is, however, it does support the bundler syntax for resolving symvers.
 
 ## Writing recipes
 
