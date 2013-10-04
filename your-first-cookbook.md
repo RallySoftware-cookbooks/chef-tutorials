@@ -87,14 +87,33 @@ The `metadata.rb` has a supports tag for describing supported operating systems.
 Lastly, the `depends` operator is used to express cookbook dependencies that need to be resolved on the node at converge time. It is not as expressive as the `Berkshelf` syntax is, however, it does support the bundler syntax for resolving symvers.
 
 ## Writing recipes
+Alright so now you know how dependencies are handled, you can start working on your first recipe. 
 
+### The default recipe
+Any cookbook development should always start with the default recipe. When `jackchop` created your cookbook a default recipe was automatically created and placed in the recipes directory.
 
-Writing recipes is easy. The most important thing to figure out first is the order in which you want components and resources created. Once you figure that out, then first start in the Default recipe. go to [resources](docs.opscode.com/chef/resources.html)
+First, cookbooks are a collection of [resources](http://docs.opscode.com/resource.html). `Resources` act like a DSL for providing logic to your recipe. Chef provides many resources out of the box such as -
 
-Start by creating a User. [resource - user](docs.opscode.com/chef/resources.html#user)
+* including other cookbook recipes
+* creating users
+* creating groups
+* downloading files from remote locations
+* creating files an from ruby erb `templates`
+* installing packages
 
+But, you can also create your own, however, that will be covered in a later tutorial.
+
+#### Including other cookbook recipes within your own
+In most cases you should only be worried about including other cookbook's recipes within your own. To do that you can use the following `resource`.
+
+```ruby
+include_recipe 'mysql::server'
 ```
-user 'my_machine_user'
+
+At compile time, the chef-client will add the `server` recipe from the mysql cookbook into the runlist. This happens inline with the currently executing recipe. If you include a recipe in your cookbook you need to make sure that you define that dependency within your `metadata.rb`. 
+
+```ruby
+depends 'mysql'
 ```
 
 ## Setting and using attributes
