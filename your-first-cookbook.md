@@ -57,7 +57,7 @@ cookbook 'mysql', git: 'https://github.com/opscode-cookbooks/mysql.git', ref: 'e
 
 The first line (`chef_api :config`) in this mock `Berksfile` says to use the Berkshelf config (located at `~/.berkshelf/config.json`) to learn how to communicate with your Chef Server. In this particular case, it will end up using your knife config to reach out and fetch the cookbooks. 
 
-Next, `site :opscode` says to use the community site to fufil any cookbooks that could not be found on your Chef Server and locatins are not specified for the cookbook itself.
+Next, `site :opscode` says to use the community site to fulfill any cookbooks that could not be found on your Chef Server and locations are not specified for the cookbook itself.
 
 Finally, we see `metadata` which tells Berkshelf to use the `metadata.rb` file to locate additional dependencies that are not specified in the `Berksfile`.
 
@@ -87,6 +87,7 @@ The `metadata.rb` has a supports tag for describing supported operating systems.
 Lastly, the `depends` operator is used to express cookbook dependencies that need to be resolved on the node at converge time. It is not as expressive as the `Berkshelf` syntax is, however, it does support the bundler syntax for resolving symvers.
 
 ## Writing recipes
+
 
 Writing recipes is easy. The most important thing to figure out first is the order in which you want components and resources created. Once you figure that out, then first start in the Default recipe. go to [resources](docs.opscode.com/chef/resources.html)
 
