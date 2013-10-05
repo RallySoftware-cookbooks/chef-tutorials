@@ -17,7 +17,7 @@ You should see the following directories -
 * `tests` - Should be pretty obvious what goes in this directory =)
 
 The following files are also created - 
-* `.kitchen.yml` - Used to configure the test-kitchen framework
+* `.kitchen.yml` - Used to configure the test-kitchen framework used for integration testing
 * `Berksfile` - This is the file used by Berkshelf to determine dependencies of your cookbook during development/testing.
 * `chefignore` - This file tells the chef server what files to ignore during uploads and syntax checking.
 * `metadata.rb` - Used to describe the cookbook
