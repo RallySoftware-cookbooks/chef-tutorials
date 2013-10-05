@@ -9,7 +9,7 @@ Once you are in that directory run the following command -
 jackchop cookbook create <name of your cookbook>
 ```
 
-This should create a new directory in `cookbooks` named whatever you passed in to jackchop. `CD` into that directory and let's take a look at what was created.
+This should create a new directory in `cookbooks` named whatever you passed in to jackchop. Take a look in that directory and let's take a see what was created.
 
 You should see the following directories -
 * `attributes` - This is where you still store the default attributes for your cookbook
