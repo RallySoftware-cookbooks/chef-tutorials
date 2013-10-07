@@ -135,14 +135,14 @@ Lastly, the action attribute can be specified to invoke specific actions against
 
 #### Examples of common resources
 ```ruby
-package 'mysql' do
+package "mysql" do
   action :install
 end
 ```
 
 ```ruby
 user "username" do
-  password 'Password'
+  password "Password"
 end
 ```
 
