@@ -28,5 +28,5 @@ Now you need to learn about chef and our development process. This repo should c
 
 Also we are willing to pair with any team that is doing chef development work to help get you started with your cookbook!
 
-* [Knife Cheat Sheet](docs.opscode.com/_images/qr_knife_web.png)
+* [Knife Cheat Sheet](http://docs.opscode.com/_images/qr_knife_web.png)
 * [About Knife](http://docs.opscode.com/knife.html)
