@@ -187,28 +187,16 @@ template "/myservice/myservice.conf" do
 end
 ```
 
-## Setting and using attributes
-Setting attributes
-
-
-## Using Node attributes
-
-## Using other cookbooks The Fellowship team wrote.
-
-
-
+## Attributes
+* talk about attribute levels (default, force default, normal, override, force override, automatic)
+* node.set vs node.default vs node.[foo]
+* attributes file
+* application cookbook attributes
 
 ## Writing tests
-
-
 ### Unit tests
-
-
 ### Integration tests
-
-
 ### Manual testing with Vagrant
-
 
 ## Writing a kick ass README!
 
