@@ -95,11 +95,11 @@ Any cookbook development should always start with the default recipe. When `jack
 First, cookbooks are a collection of [resources](http://docs.opscode.com/resource.html). `Resources` act like a DSL for providing logic to your recipe. Chef provides many resources out of the box such as -
 
 * including other cookbook recipes
-* creating users
-* creating groups
-* downloading files from remote locations
-* creating files an from ruby erb `templates`
-* installing packages
+* creating [user](http://docs.opscode.com/resource_user.html)
+* creating [group](http://docs.opscode.com/resource_group.html)
+* downloading files from [remote locations](http://docs.opscode.com/resource_remote_file.html)
+* creating files an from ruby erb [templates](http://docs.opscode.com/resource_template.html)
+* installing [packages](http://docs.opscode.com/resource_package.html)
 
 But, you can also create your own, however, that will be covered in a later tutorial.
 
@@ -114,6 +114,41 @@ At compile time, the chef-client will add the `server` recipe from the mysql coo
 
 ```ruby
 depends 'mysql'
+```
+
+#### Using other [resources](http://docs.opscode.com/resource.html)
+Creating a [user](http://docs.opscode.com/resource_user.html) is pretty common in all chef cookbooks. So we will use it as a guide for describing the general structure of Chef resources. 
+
+```ruby
+user "name"
+  attribute  "value"
+  attribute1 123
+  action     :create
+end
+```
+
+The first item after defining the resource is the `name` attribute. It is used as output during the chef run to mark which resource is being executed. For the user resource it will double as the username if the username attribute is not specified. This is common amongst all resources. You should be aware of what a resource will do with the name attribute when specified. 
+
+An Attribute for a resource can be any of the ruby primary types (strings, hashes, arrarys, booleans, integers) and those are specified in the attribute's resource file.
+
+Lastly, the action attribute can be specified to invoke specific actions against a resource. For example, the create action on a user will create that user with the specified attributes. However, if you needed to remove a user you could specify the `:remove` attribute. Each resource *should* have a default action associated with it.
+
+#### Examples of common resources
+```ruby
+package 'mysql' do
+  action :install
+end
+```
+
+```ruby
+user "username" do
+  password 'Password'
+end
+```
+
+```ruby
+directory "/my/awesome/directory"
+end
 ```
 
 ## Setting and using attributes
