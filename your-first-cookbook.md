@@ -106,6 +106,12 @@ But, you can also create your own, however, that will be covered in a later tuto
 #### Including other cookbook recipes within your own
 In most cases you should only be worried about including other cookbook's recipes within your own. To do that you can use the following `resource`.
 
+To include the default recipe you can just specify the cookbook.
+```ruby
+include_recipe "mysql"
+```
+
+If you need to include a non-default recipe you use the `cookbook::recipe` syntax.
 ```ruby
 include_recipe "mysql::server"
 ```
@@ -182,6 +188,8 @@ end
 ```
 
 ## Setting and using attributes
+Setting attributes
+
 
 ## Using Node attributes
 
