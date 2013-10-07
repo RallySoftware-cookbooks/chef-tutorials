@@ -47,12 +47,12 @@ site :opscode
 
 metadata
 
-cookbook 'memcached', '~> 0.1.0'
-cookbook 'foo', path: '/Users/localadmin/projects/cookbooks/foo'
-cookbook 'mysql', github: 'opscode-cookbooks/mysql'
-cookbook 'mysql', git: 'git://github.com/opscode-cookbooks/mysql.git'
-cookbook 'mysql', git: 'https://github.com/opscode-cookbooks/mysql.git', branch: 'foodcritic'
-cookbook 'mysql', git: 'https://github.com/opscode-cookbooks/mysql.git', ref: 'eef7e65806e7ff3bdbe148e27c447ef4a8bc3881'
+cookbook "memcached", "~> 0.1.0"
+cookbook "foo", path: "/Users/localadmin/projects/cookbooks/foo"
+cookbook "mysql", github: "opscode-cookbooks/mysql"
+cookbook "mysql", git: "git://github.com/opscode-cookbooks/mysql.git"
+cookbook 'mysql", git: "https://github.com/opscode-cookbooks/mysql.git", branch: "foodcritic"
+cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql.git", ref: "eef7e65806e7ff3bdbe148e27c447ef4a8bc3881"
 ```
 
 The first line (`chef_api :config`) in this mock `Berksfile` says to use the Berkshelf config (located at `~/.berkshelf/config.json`) to learn how to communicate with your Chef Server. In this particular case, it will end up using your knife config to reach out and fetch the cookbooks. 
