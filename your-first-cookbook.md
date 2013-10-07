@@ -16,7 +16,7 @@ You should see the following directories -
 * `recipes` - Recipes are the "logic" of your cookbook
 * `tests` - Should be pretty obvious what goes in this directory =)
 
-The following files are also created - 
+The following files are also created -
 * `.kitchen.yml` - Used to configure the test-kitchen framework used for integration testing
 * `Berksfile` - This is the file used by Berkshelf to determine dependencies of your cookbook during development/testing.
 * `chefignore` - This file tells the chef server what files to ignore during uploads and syntax checking.
@@ -37,9 +37,9 @@ Jackchop will also init a git repo for you when you create a cookbook. **However
 Your cookbook is now the baddest in all of Revere!
 
 ## Berksfile and metadata.rb
-Before we talk about writing your first recipe I want to describe the purpose of the Berksfile and the metadata.rb file. 
+Before we talk about writing your first recipe I want to describe the purpose of the Berksfile and the metadata.rb file.
 ### Berksfile
-The Berksfile is used by [Berkshelf](http://berkshelf.com/) to help manage the dependencies of your cookbook during development and test. It will allow you to specify a cookbook depenency as a git repo, a path on your local machine, or as version (using the bundler syntax). 
+The Berksfile is used by [Berkshelf](http://berkshelf.com/) to help manage the dependencies of your cookbook during development and test. It will allow you to specify a cookbook depenency as a git repo, a path on your local machine, or as version (using the bundler syntax).
 
 ```ruby
 chef_api :config
@@ -55,29 +55,29 @@ cookbook 'mysql", git: "https://github.com/opscode-cookbooks/mysql.git", branch:
 cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql.git", ref: "eef7e65806e7ff3bdbe148e27c447ef4a8bc3881"
 ```
 
-The first line (`chef_api :config`) in this mock `Berksfile` says to use the Berkshelf config (located at `~/.berkshelf/config.json`) to learn how to communicate with your Chef Server. In this particular case, it will end up using your knife config to reach out and fetch the cookbooks. 
+The first line (`chef_api :config`) in this mock `Berksfile` says to use the Berkshelf config (located at `~/.berkshelf/config.json`) to learn how to communicate with your Chef Server. In this particular case, it will end up using your knife config to reach out and fetch the cookbooks.
 
 Next, `site :opscode` says to use the community site to fulfill any cookbooks that could not be found on your Chef Server and locations are not specified for the cookbook itself.
 
 Finally, we see `metadata` which tells Berkshelf to use the `metadata.rb` file to locate additional dependencies that are not specified in the `Berksfile`.
 
 ### Metadata.rb
-The `metadata.rb` file is what is used by Chef to resolve dependencies when the `chef-client` is executing on a node. This means that you MUST specify your dependent cookbooks in this file for them to be included when the node is converged. 
+The `metadata.rb` file is what is used by Chef to resolve dependencies when the `chef-client` is executing on a node. This means that you MUST specify your dependent cookbooks in this file for them to be included when the node is converged.
 
 ```ruby
-name             'foo'
-maintainer       'Rally Software Development Corp'
-maintainer_email 'rallysoftware-cookbooks@rallydev.com'
-license          'MIT'
-description      'Installs/Configures foo'
-long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.0'
+name             "foo"
+maintainer       "Rally Software Development Corp"
+maintainer_email "rallysoftware-cookbooks@rallydev.com"
+license          "MIT"
+description      "Installs/Configures foo"
+long_description IO.read(File.join(File.dirname(__FILE__), "README.md"))
+version          "0.1.0"
 
-supports 'centos'
-supports 'ubuntu'
+supports "centos"
+supports "ubuntu"
 
-depends 'bar'
-depends 'baz', '~> 0.2.0'
+depends "bar"
+depends "baz", "~> 0.2.0"
 ```
 
 The first section will be setup correctly when you use `jackchop` to create your cookbook. However, you will need to explicitly set the version each time you want to bump the version of your cookbook.
@@ -87,7 +87,7 @@ The `metadata.rb` has a supports tag for describing supported operating systems.
 Lastly, the `depends` operator is used to express cookbook dependencies that need to be resolved on the node at converge time. It is not as expressive as the `Berkshelf` syntax is, however, it does support the bundler syntax for resolving symvers.
 
 ## Writing recipes
-Alright so now you know how dependencies are handled, you can start working on your first recipe. 
+Alright so now you know how dependencies are handled, you can start working on your first recipe.
 
 ### The default recipe
 Any cookbook development should always start with the default recipe. When `jackchop` created your cookbook a default recipe was automatically created and placed in the recipes directory.
@@ -107,17 +107,17 @@ But, you can also create your own, however, that will be covered in a later tuto
 In most cases you should only be worried about including other cookbook's recipes within your own. To do that you can use the following `resource`.
 
 ```ruby
-include_recipe 'mysql::server'
+include_recipe "mysql::server"
 ```
 
-At compile time, the chef-client will add the `server` recipe from the mysql cookbook into the runlist. This happens inline with the currently executing recipe. If you include a recipe in your cookbook you need to make sure that you define that dependency within your `metadata.rb`. 
+At compile time, the chef-client will add the `server` recipe from the mysql cookbook into the runlist. This happens inline with the currently executing recipe. If you include a recipe in your cookbook you need to make sure that you define that dependency within your `metadata.rb`.
 
 ```ruby
-depends 'mysql'
+depends "mysql"
 ```
 
 #### Using other [resources](http://docs.opscode.com/resource.html)
-Creating a [user](http://docs.opscode.com/resource_user.html) is pretty common in all chef cookbooks. So we will use it as a guide for describing the general structure of Chef resources. 
+Creating a [user](http://docs.opscode.com/resource_user.html) is pretty common in all chef cookbooks. So we will use it as a guide for describing the general structure of Chef resources.
 
 ```ruby
 user "name"
@@ -127,7 +127,7 @@ user "name"
 end
 ```
 
-The first item after defining the resource is the `name` attribute. It is used as output during the chef run to mark which resource is being executed. For the user resource it will double as the username if the username attribute is not specified. This is common amongst all resources. You should be aware of what a resource will do with the name attribute when specified. 
+The first item after defining the resource is the `name` attribute. It is used as output during the chef run to mark which resource is being executed. For the user resource it will double as the username if the username attribute is not specified. This is common amongst all resources. You should be aware of what a resource will do with the name attribute when specified.
 
 An Attribute for a resource can be any of the ruby primary types (strings, hashes, arrarys, booleans, integers) and those are specified in the attribute's resource file.
 
