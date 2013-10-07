@@ -148,6 +148,36 @@ end
 
 ```ruby
 directory "/my/awesome/directory"
+  action :create
+  mode   00755
+  owner "owner"
+  group "group"
+end
+```
+
+```ruby
+file "/where/to/place/my/file.foo"
+  mode    0644
+  owner   'root'
+  group   'root' 
+  content 'my content'
+end
+```
+
+```ruby
+remote_file "/path/to/place/file" do
+  source "http://foo.com/bar.zip"
+  owner  "root"
+  group  "root"
+  mode   0755
+end
+```
+
+```ruby
+template '/myservice/myservice.conf' do
+  source 'myservice.conf.erb'
+  mode '644'
+  variables(:key => value, :key2 => value2)
 end
 ```
 
