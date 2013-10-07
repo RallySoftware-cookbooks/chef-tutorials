@@ -51,7 +51,7 @@ cookbook "memcached", "~> 0.1.0"
 cookbook "foo", path: "/Users/localadmin/projects/cookbooks/foo"
 cookbook "mysql", github: "opscode-cookbooks/mysql"
 cookbook "mysql", git: "git://github.com/opscode-cookbooks/mysql.git"
-cookbook 'mysql", git: "https://github.com/opscode-cookbooks/mysql.git", branch: "foodcritic"
+cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql.git", branch: "foodcritic"
 cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql.git", ref: "eef7e65806e7ff3bdbe148e27c447ef4a8bc3881"
 ```
 
