@@ -19,12 +19,15 @@ There are few things you need to do before you can start writing cookbooks for y
 Jackchop is a tool that the Fellowship has created to assist with cookbook development. To install jackchop run the following command:
 * `gem install jackchop --source http://gems.f4tech.com`
 
-### Step 3 - Get knife installed on your pairing machines
+### Step 3 - Get knife installed
 (Knife is a command-line tool that provides an interface between a local chef-repo and the server.)
 A member of the Fellowship team will have to assist you in getting knife setup on your machine.
 
+### Step 4 - Other tools
+* You need to have the lastest versins of [virtual box](https://www.virtualbox.org/wiki/Downloads) and [vagrant](http://downloads.vagrantup.com/).
+
 ### Step 4 - Now what?
-Now you need to learn about chef and our development process. This repo should contain all of the information you need for writing cookbooks and how to get those into "production". If you have any questions feel free to contact the Fellowship team or just stop by.
+We recommend reading through [your first cookbook](your-first-cookbook.md) first. However, this repo should contain all of the information you need for writing cookbooks and how to get those into "production". If you have any questions feel free to contact the Fellowship team or just stop by.
 
 Also we are willing to pair with any team that is doing chef development work to help get you started with your cookbook!
 
