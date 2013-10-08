@@ -21,7 +21,6 @@ Jackchop is a tool that the Fellowship has created to assist with cookbook devel
 
 ### Step 3 - Get knife installed on your pairing machines
 (Knife is a command-line tool that provides an interface between a local chef-repo and the server.)
-`curl -L https://opscode-omnibus-packages.s3.amazonaws.com/mac_os_x/10.7/x86_64/chef-11.6.0_1.mac_os_x.10.7.2.sh | sudo bash`
 A member of the Fellowship team will have to assist you in getting knife setup on your machine.
 
 ### Step 4 - Now what?
