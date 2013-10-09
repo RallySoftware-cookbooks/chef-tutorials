@@ -32,7 +32,7 @@ bundle install
 rake test
 ```
 
-**NOTE** If you have not installed vagrant yet, running `rake test` will fail. You can download the latest version of vagrant from [here](http://downloads.vagrantup.com/).
+**NOTE:** If you have not installed vagrant yet, running `rake test` will fail. You can download the latest version of vagrant from [here](http://downloads.vagrantup.com/). You also need the vagrant-berkshelf plugin, to install run `vagrant plugin install vagrant-berkshelf`.
 
 Jackchop will also init a git repo for you when you create a cookbook. **However, it does not create a github repo!** Currently, all cookbooks are under the RallySoftware-cookbooks orginization which means the repo will need to be created by a member of the Fellowship team. This functionality may eventually be extended to Jarvis, but for now we will need to help you.
 
@@ -189,11 +189,52 @@ template "/myservice/myservice.conf" do
 end
 ```
 
-## Attributes
-* talk about attribute levels (default, force default, normal, override, force override, automatic)
-* node.set vs node.default vs node.[foo]
-* attributes file
-* application cookbook attributes
+## [Attributes](http://docs.opscode.com/essentials_cookbook_attribute_files.html)
+Attributes represent a way to set configuration values for the software that is being installed on a given node. The values are set at converge time of the node and may be overriden through an order of precedence system. Attribute values may be unique to a given node or span all of the nodes in an orginization.
+
+### `attributes/default.rb`
+The most common way of setting attributes is through the `attributes/default.rb` file located in most cookbooks. Typically, this file will contain the sensible defaults for the cookbook and should allow for convergence on most systems. Values in this file may look like the following - 
+
+```ruby
+default[:myapp][:some_property][:another_property] = "foo"
+default[:myapp][:server][:should_install_bar] = true
+```
+
+**NOTE:** prefacing the attribute with default sets an order of precedence for the value. More on this later...
+
+### `ohai` (pronounced oh hi)
+Ohai is a tool that is installed on all of the nodes that are bootstrapped with chef. It allows for cookbooks (and knife) to query information about the system that may not actually reside within a cookbook. For example you could retrieve -
+* hostname
+* fqdn (fully qualified domain name)
+* ip address
+* drive information
+* file system mounts
+* memory information
+* what programming languages are installed 
+* kernel information
+
+The amount of information is endless that can be retrieved from ohai and it should be used any time you rely on system information for installing or upgrading software on a node.
+
+### Roles and Environments
+Roles and Environemnts represent 2 other ways that attributes can be set on a node. When attributes are set at this level it typically means they are more global in nature and may affect multiple nodes. If you feel that you have an attribute(s) that should be set at the role or environment level please come by and talk with the Fellowship team.
+
+### Setting attributes in a recipe
+You can also set attributes during the runtime of a recipe. This might happen if you need to compute some specific values based on the state of the system and use them later in the same recipe (or even in a different one).
+
+Typically, you would want to set an attribute using the following syntax -
+
+```ruby
+default.myattribute.bar = "foo"
+```
+
+### Order of precedence
+There is a complicated scheme to determine when values will be overriden. You can find a chart describing the order [here](http://docs.opscode.com/_images/overview_chef_attributes_table.png). I would also recommend reading the page on [attributes](http://docs.opscode.com/essentials_cookbook_attribute_files.html).
+
+## Application cookbooks and attributes
+Your cookbooks should follow the `application cookbook` pattern which means that you build 1 cookbook that encompasses everything that is needed for your application to run. In this cookbook you will set all of the default values that are required for your cookbook to converge and run the application.
+
+For a detailed example please see the [buildserver cookbook](http://github.com/RallySoftware-cookbooks/buildserver).
+
 
 ## Writing tests
 ### Unit tests
