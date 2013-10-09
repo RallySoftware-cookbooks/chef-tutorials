@@ -11,9 +11,8 @@ There are few things you need to do before you can start writing cookbooks for y
   * What are you dependencies? Do you need something installed on the box that may not be there? 
   * How are you going to build your artifacts? Do you need your own CI system?
 
-### Step 1.5 - Watch these videos
-* [The Berkshelf Way](http://youtu.be/hYt0E84kYUI)
-* [Getting More Chefs in the Kitchen](http://youtu.be/ipSudpDYhTM)
+### Step 1.5 - Watch this video
+[The Berkshelf Way](http://youtu.be/hYt0E84kYUI)
 
 ### Step 2 - Get Jackchop installed
 Jackchop is a tool that the Fellowship has created to assist with cookbook development. To install jackchop run the following command:
