@@ -32,9 +32,11 @@ bundle install
 rake test
 ```
 
+**NOTE** If you have not installed vagrant yet, running `rake test` will fail. You can download the latest version of vagrant from [here](http://downloads.vagrantup.com/).
+
 Jackchop will also init a git repo for you when you create a cookbook. **However, it does not create a github repo!** Currently, all cookbooks are under the RallySoftware-cookbooks orginization which means the repo will need to be created by a member of the Fellowship team. This functionality may eventually be extended to Jarvis, but for now we will need to help you.
 
-Your cookbook is now the baddest in all of Revere!
+**Your cookbook is now the baddest in all of Revere!**
 
 ## Berksfile and metadata.rb
 Before we talk about writing your first recipe I want to describe the purpose of the Berksfile and the metadata.rb file.
