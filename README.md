@@ -24,6 +24,7 @@ A member of the Fellowship team will have to assist you in getting knife setup o
 
 ### Step 4 - Other tools
 * You need to have the lastest versions of [virtual box](https://www.virtualbox.org/wiki/Downloads) and [vagrant](http://downloads.vagrantup.com/).
+* Once you have vagrant installed run the following command - `vagrant plugin install vagrant-berkshelf`
 
 ### Step 5 - Now what?
 We recommend reading through [your first cookbook](your-first-cookbook.md) first. However, this repo should contain all of the information you need for writing cookbooks and how to get those into "production". If you have any questions feel free to contact the Fellowship team or just stop by.
