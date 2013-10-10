@@ -308,7 +308,7 @@ When executing test kitchen commands in a mutli-suite/multi-platform environment
 
 Get the idea?
 
-#### Test kitchen workflow
+#### Test kitchen commands
 There are just a few commands that you should know -
 * `kitchen converge` - Just converge the node (do not run the tests) - all by default
 * `kitchen list` - List all the nodes that will be started - based on the permutation of platforms and suites
@@ -317,12 +317,22 @@ There are just a few commands that you should know -
 * `kitchen destroy` - Destroy the nodes specified by the regex (all by default)
 * `kitchen test` - Run all the tests after the convergence - will destroy nodes when completed. If a test fails for a node it will hault execution. You can then use kitchen login for that node to inspect the state of the VM.
 
+#### Writing Serverspec tests
+For each suite in your kitchen yml there needs to be a directory that corresponds to that suite name.
 
+* `test/integration/default/serverspec`
+* `test/integration/my-other-suite/serverspec`
 
-### Manual testing with Vagrant
+You can then have as many spec files as you want under the serverspec directory as you wish. 
+
+Use the following cookbooks as examples when writing `serverspec` tests -
+* [leiningen](https://github.com/RallySoftware-cookbooks/leiningen/blob/master/test/integration/leiningen/serverspec/leiningen_spec.rb)
+* [ganglia](https://github.com/RallySoftware-cookbooks/ganglia/tree/master/test/integration/default/serverspec)
+* [buildserver](https://github.com/RallySoftware-cookbooks/buildserver/tree/master/test/integration/default/serverspec)
 
 ## Writing a kick ass README!
-
-All cookbooks must have a README, it is required!
+Jackchop created a README.md file for you with some instructions on how to make it better. **PLEASE DO THIS!!**
+**All cookbooks must have a README, it is required!**
 
 ## Publishing your cookbook to the chef server
+Want to get your cookbook on to our Chef Server? Come talk with the fellowship and we will help you!
