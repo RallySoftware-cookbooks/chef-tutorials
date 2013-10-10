@@ -245,7 +245,80 @@ Chefspec is an RSpec-based test framework which will exercise the logic in your 
 
 For example, say that you write a config file from a template that will have different values when the cookbook executes on Ubuntu rather than CentOS. Testing the templates have these differences with fully converged VMs would be time-consuming at best, but being able to assert that the correct template resource and content will be created is sufficient to give us the confidence we need that the Chef run will be successful.
 
-### Integration tests
+To run your unit tests execute the following command - `rake unit`.
+
+For some good examples on writing `chefspec` tests look at the following -
+
+* [Ad Auth](https://github.com/RallySoftware-cookbooks/ad-auth/blob/master/test/unit/default_spec.rb) tests show how to mock out a data bag and an environment
+* [Ganglia](https://github.com/RallySoftware-cookbooks/ganglia/blob/master/test/unit/gmetad_spec.rb) shows how to test against templates
+* [Selenium](https://github.com/RallySoftware-cookbooks/selenium/tree/master/test/unit) has a ton of tests around executing commands, working with cron, symlinks and much more
+
+### Integration tests - [serverspec.org](http://serverspec.org/)
+The bulk of our testing with cookbooks takes place using `serverspec`. Serverspec allows the user to write tests that verify the integrity of the operating system by executing commands and checking the standard out and return codes. These tests are facilitated by another framework called [Test Kitchen](https://github.com/opscode/test-kitchen). Test kitchen will stand up a vbox image and bootstrap that image with chef and make sure the cookbooks are uploaded to the in memory chef server (we use [chef-zero](https://github.com/jkeiser/chef-zero)).
+
+#### `.kitchen.yml`
+The kitchen yml file is the configurating file for your test kitchen environment. An example file make look like the following - 
+
+```yml
+---
+driver_plugin: vagrant
+provisoner: chef_zero
+platforms:
+- name: centos-6.4-x86_64
+  driver_config:
+    box: opscode-centos-6.4-x86_64
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.4_chef-11.4.4.box
+    require_chef_omnibus: 11.6.0
+    customize:
+      cpus: 1
+      memory: 256
+- name: ubuntu-12.04
+  driver_config:
+    box: opscode-ubuntu-12.04
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-11.4.4.box
+    require_chef_omnibus: 11.6.0
+    customize:
+      cpus: 1
+      memory: 256
+suites:
+- name: some_recipe_test
+  run_list:
+    - recipe[mycookbook::some_recipe]
+    attributes:
+    an_attribute:
+      sub_attribute: 'my_value'
+- name: another_recipe_test
+  run_list:
+    - recipe[mycookbook::another_recipe]
+```
+
+Test kitchen will create a permutation for each suite and platform provided in the kitchen yml. If you executed `kitchen list` in your cookbook directory it might look something like this -
+
+```bash
+some_recipe_test-centos-64-x86-64     Vagrant  Chef Zero    <Not Created>
+some_recipe_test-ubuntu-1204          Vagrant  Chef Zero    <Not Created>
+another_recipe_test-centos-64-x86-64  Vagrant  Chef Zero    <Not Created>
+another_recipe_test-ubuntu-1204       Vagrant  Chef Zero    <Not Created>
+```
+
+When executing test kitchen commands in a mutli-suite/multi-platform environment you may want to specify a REGEX to make sure that only 1 suite of tests or 1 platform is executed against. For example -
+* `kitchen converge some_recipe_test` - Run converge on the nodes that have `some_recipe_test` specified in the name
+* `kitchen converge centos` - Just converge the `centos` nodes
+* `kitchen verify some` - Converge and run the tests on nodes that have `some` in the name.
+
+Get the idea?
+
+#### Test kitchen workflow
+There are just a few commands that you should know -
+* `kitchen converge` - Just converge the node (do not run the tests) - all by default
+* `kitchen list` - List all the nodes that will be started - based on the permutation of platforms and suites
+* `kitchen login` - Login to the node(s) specified by the regex
+* `kitchen verify` - Converge and then run the tests but do not destroy the node
+* `kitchen destroy` - Destroy the nodes specified by the regex (all by default)
+* `kitchen test` - Run all the tests after the convergence - will destroy nodes when completed. If a test fails for a node it will hault execution. You can then use kitchen login for that node to inspect the state of the VM.
+
+
+
 ### Manual testing with Vagrant
 
 ## Writing a kick ass README!
