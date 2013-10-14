@@ -3,7 +3,7 @@
 ## Getting started
 
 ### Step 1 - Come talk with us!
-There are few things you need to do before you can start writing cookbooks for your application. The first and most important step is come talk with the Fellowship team. You should be ready to discuss important details about your application such as - 
+There are few things you need to do before you can start writing cookbooks for your application. The first and most important step is come talk with The Fellowship team. You should be ready to discuss important details about your application such as - 
   * What language tools do you need? ie. Do you need leiningen? grails? gradle?
   * Are you using a database that will run on the box or on another system that will be provisioned by chef as well?
     * What database will you be using? Mongo? Cassandra?
