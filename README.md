@@ -18,6 +18,8 @@ There are few things you need to do before you can start writing cookbooks for y
 [Jackchop](https://github.com/RallySoftware-cookbooks/jackchop) is a tool that the Fellowship has created to assist with cookbook development. To install jackchop run the following command:
 * `gem install jackchop --source http://gems.f4tech.com`
 
+You can also add the f4tech gems server to your gem sources by running `gems sources -a http://gems.f4tech.com`
+
 ### Step 3 - Get knife installed
 (Knife is a command-line tool that provides an interface between a local chef-repo and the server.)
 A member of the Fellowship team will have to assist you in getting knife setup on your machine.
