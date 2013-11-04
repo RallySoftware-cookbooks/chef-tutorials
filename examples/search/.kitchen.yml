@@ -1,0 +1,16 @@
+---
+driver_plugin: vagrant
+provisioner: chef_zero
+platforms:
+- name: centos-6.4-x86_64
+  driver_config:
+    box: opscode-centos-6.4-x86_64
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.4_chef-11.4.4.box
+    require_chef_omnibus: 11.6.0
+    customize:
+      cpus: 1
+      memory: 256
+suites:
+- name: default
+  run_list:
+    - recipe[search::node_search]

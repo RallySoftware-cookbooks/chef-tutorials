@@ -1,0 +1,7 @@
+{
+  "chef_type": "node",
+  "json_class": "Chef::Node",
+  "name": "physical-foobar-01",
+  "chef_environment": "production",
+  "run_list": ["production::base"]
+}

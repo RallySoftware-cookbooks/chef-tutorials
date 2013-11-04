@@ -1,0 +1,8 @@
+{
+  "chef_type": "node",
+  "json_class": "Chef::Node",
+  "name": "ec2-bar-03",
+  "chef_environment": "test",
+  "run_list": ["my-ec2-base::default"],
+  "default" : {}
+}
