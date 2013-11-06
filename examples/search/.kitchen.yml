@@ -13,4 +13,4 @@ platforms:
 suites:
 - name: default
   run_list:
-    - recipe[search::node_search]
+    - recipe[search::environment_search]

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: search
-# Recipe:: node_search
+# Recipe:: environment_search
 #
 # Copyright (c) 2013 Rally Software Development Corp
 # 
@@ -26,4 +26,18 @@
 
 test_nodes = search(:node, "chef_environment:test")
 
-puts "TEST NODES:#{test_nodes}"
+template '/root/test_nodes' do
+  source 'nodes.erb'
+  owner  'root'
+  group  'root'
+  variables ({:nodes => test_nodes})
+end
+
+prod_nodes = search(:node, "chef_environment:production")
+
+template '/root/prod_nodes' do
+  source 'nodes.erb'
+  owner  'root'
+  group  'root'
+  variables ({:nodes => prod_nodes})
+end
