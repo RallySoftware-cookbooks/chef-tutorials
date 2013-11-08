@@ -24,7 +24,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-test_nodes = search(:node, "chef_environment:test")
+test_nodes = search(:node, 'chef_environment:test')
 
 template '/root/test_nodes' do
   source 'nodes.erb'
@@ -33,7 +33,7 @@ template '/root/test_nodes' do
   variables ({:nodes => test_nodes})
 end
 
-prod_nodes = search(:node, "chef_environment:production")
+prod_nodes = search(:node, 'chef_environment:production')
 
 template '/root/prod_nodes' do
   source 'nodes.erb'

@@ -21,4 +21,8 @@ describe 'search::environment_search' do
   it { should create_file_with_content '/root/test_nodes', /ec2-bar-02/ }
   it { should create_file_with_content '/root/test_nodes', /ec2-bar-03/ }
 
+  it { should create_file_with_content '/root/prod_nodes', /physical-baz-01/ }
+  it { should create_file_with_content '/root/prod_nodes', /physical-foo-01/ }
+  it { should create_file_with_content '/root/prod_nodes', /physical-foobar-01/ }
+
 end
