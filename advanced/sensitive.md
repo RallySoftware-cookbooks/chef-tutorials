@@ -29,7 +29,7 @@ bags are structured in JSON and need to include the environment name as
 the top level VALUE for any other attributes used. Below is an example of
 a data bag supporting the 'alpha' and 'beta' environments.
 
-  ```json
+```json
 {
   "id": "testdata",
   "alpha": {
@@ -178,7 +178,7 @@ the `--json` argument instead of passing in a JSON string:
 
 Contents of data.json would be:
 
-```
+```json
 {
   "gamma": {
     "sql_user": "user"
