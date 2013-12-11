@@ -73,8 +73,10 @@ Using the json stanza above, you could save it in a file called
 `testdata.json`.  The create command-line using the json file would look
 like this:
 
-`$ knife encrypt create testdatabag testdata -S "name:hosta* OR \
-name:hostb*" --json testdata.json --mode client --admins admin1,admin2`
+```shell
+$ knife encrypt create testdatabag testdata -S "name:hosta* OR name:hostb*" \
+--json testdata.json --mode client --admins admin1,admin2
+```
 
 This command-line contains several components:
 
