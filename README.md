@@ -1,14 +1,21 @@
 # So you want to learn chef?
 
+## Table of Contents
+- [Getting Started](#getting-started)
+- [Storing Sensitive Data](advanced/sensitive.md)
+- [Opscode Docs](http://docs.opscode.com/)
+  - [Resource Documentation](http://docs.opscode.com/resource.html)
+  - [Knife Cheat Sheet](http://docs.opscode.com/_images/qr_knife_web.png)
+
 ## Getting started
 
 ### Step 1 - Come talk with us!
-There are few things you need to do before you can start writing cookbooks for your application. The first and most important step is come talk with The Fellowship team. You should be ready to discuss important details about your application such as - 
+There are few things you need to do before you can start writing cookbooks for your application. The first and most important step is come talk with The Fellowship team. You should be ready to discuss important details about your application such as -
   * What language tools do you need? ie. Do you need leiningen? grails? gradle?
   * Are you using a database that will run on the box or on another system that will be provisioned by chef as well?
     * What database will you be using? Mongo? Cassandra?
   * Where are the hosts that are being provisioned? EC2? Boulder? Prod? Test?
-  * What are you dependencies? Do you need something installed on the box that may not be there? 
+  * What are you dependencies? Do you need something installed on the box that may not be there?
   * How are you going to build your artifacts? Do you need your own CI system?
 
 ### Step 1.5 - Watch this video
@@ -29,7 +36,7 @@ A member of the Fellowship team will have to assist you in getting knife setup o
 * Once you have vagrant installed run the following command - `vagrant plugin install vagrant-berkshelf`
 
 ### Step 5 - Now what?
-We recommend reading through [your first cookbook](your-first-cookbook.md) first. However, this repo should contain all of the information you need for writing cookbooks and how to get those into "production". If you have any questions feel free to contact the Fellowship team or just stop by.
+We recommend reading through [your first cookbook](getting-started/your-first-cookbook.md) first. However, this repo should contain all of the information you need for writing cookbooks and how to get those into "production". If you have any questions feel free to contact the Fellowship team or just stop by.
 
 Also we are willing to pair with any team that is doing chef development work to help get you started with your cookbook!
 
