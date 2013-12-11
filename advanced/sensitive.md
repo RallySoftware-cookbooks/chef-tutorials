@@ -73,7 +73,7 @@ Using the json stanza above, you could save it in a file called
 `testdata.json`.  The create command-line using the json file would look
 like this:
 
-`$ knife encrypt create testdatabag testdata -S "name:hosta* OR
+`$ knife encrypt create testdatabag testdata -S "name:hosta* OR \
 name:hostb*" --json testdata.json --mode client --admins admin1,admin2`
 
 This command-line contains several components:
@@ -212,7 +212,7 @@ Remove:
 To use chef-vault within a recipe you must install the gem and require
 it:
 
-```
+```ruby
 chef_gem 'chef-vault'
 
 require 'chef-vault'
@@ -235,7 +235,7 @@ You'll need to add `gem chef-vault` to your `Gemfile`.
 You need to mock out the call to ChefVault in order to
 test:
 
-```
+```ruby
 require_relative 'spec_helper'
 
 require 'chef-vault'
@@ -258,9 +258,9 @@ describe 'cookbook::default' do
 
   it { should install_chef_gem('chef-vault') }
 
-  it { node[:datomic][:sql_user].should == 'herp' }
-  it { node[:datomic][:sql_password].should == 'derp' }
-  it { node[:datomic][:sql_url].should == 'jdbc:oracle:thin:@//somedbhost:1521/derpadb' }
+  it { node[:cookbook][:sql_user].should == 'herp' }
+  it { node[:cookbook][:sql_password].should == 'derp' }
+  it { node[:cookbook][:sql_url].should == 'jdbc:oracle:thin:@//somedbhost:1521/derpadb' }
 end
 ```
 
