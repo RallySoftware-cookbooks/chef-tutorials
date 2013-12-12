@@ -248,7 +248,7 @@ describe 'cookbook::default' do
     { '_default' => {
         'sql_user' => 'herp',
         'sql_password' => 'derp',
-        'sql_url' => 'jdbc:@//herpaderp'
+        'sql_url' => 'jdbc:oracle:thin:@//somedbhost:1521/derpadb'
       }
     }
   end
