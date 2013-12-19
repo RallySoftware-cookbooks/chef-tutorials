@@ -6,6 +6,8 @@
 - [Opscode Docs](http://docs.opscode.com/)
   - [Resource Documentation](http://docs.opscode.com/resource.html)
   - [Knife Cheat Sheet](http://docs.opscode.com/_images/qr_knife_web.png)
+- [Troubleshooting](troubleshooting/README.md)
+  - [CI](troubleshooting/ci.md)
 
 ## Getting started
 
