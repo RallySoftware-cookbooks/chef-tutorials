@@ -81,7 +81,7 @@ the following output:
 10:29:48  * [new tag]         v1.1.14 -> v1.1.14
 10:29:48  ! [rejected]        master -> master (non-fast-forward)
 10:29:48 error: failed to push some refs to
-'git@github.com:herpaderpSoftware-cookbooks/cookbook.git'
+'git@github.com:herpaderp-cookbooks/cookbook.git'
 10:29:48 To prevent you from losing history, non-fast-forward updates
 were rejected
 10:29:48 Merge the remote changes before pushing again.  See the 'Note
