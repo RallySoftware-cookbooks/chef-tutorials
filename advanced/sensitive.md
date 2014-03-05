@@ -15,11 +15,10 @@ should be stored in encrypted data bags using chef-vault.
   - [Displaying data in an encrypted data
     bag](#displaying-data-in-an-encrypted-data-bag)
   - [Updating a data bag](updating-a-data-bag)
-    - [Adding or replacing a VALUE in an existing data
-      bag](#adding-or-replacing-a-value-in-an-existing-data-bag)
+    - [Adding or replacing a VALUE in an existing data bag](#adding-or-replacing-a-value-in-an-existing-data-bag)
     - [Adding and Removing clients](#adding-and-removing-clients)
     - [Adding and Removing admins](#adding-and-removing-admins)
-- [Recipe Examples](#recipe-examples)
+- [Recipe Examples](#recipe-example)
 
 ## Data Bag Structure
 
